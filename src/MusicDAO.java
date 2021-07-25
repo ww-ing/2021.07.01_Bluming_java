@@ -14,13 +14,12 @@ public class MusicDAO {
  
     String songlocal;
     
-    //���� �߰�
+    //음악 추가
     public boolean insertMusic(MusicVO musicVO) {
     	
 		try {
 		con = DBUtil.getCon();
 		
-		//������
 		String sql = "insert into musiclist(idx, songname, songlocal, username)";
 			   sql+=" values (musicinfo_seq.nextval, ?, ?, ?)";
 			   
@@ -67,7 +66,7 @@ public class MusicDAO {
     	}
     }
     
-	//���� �̸����� ��� ��������
+	//음악 경로 찾아오기
     public String selectLocal(String songname) {
     	try {
     		con = DBUtil.getCon();
@@ -96,7 +95,7 @@ public class MusicDAO {
 		
     }    
     
-    //�������ΰ� �ݾ��ֱ�
+    //전체 닫기
     private void closeAll() {
     	try {
     		if(rs!=null) rs.close();
@@ -109,7 +108,7 @@ public class MusicDAO {
     			
 	}//--closeAll
     
-    //--��ȣ, �̸��� �޾ƿ���
+    //--모든 음악 불러오기
 	public ArrayList<MusicVO> selecMusicAll(String username){
 		
     	try {
@@ -142,7 +141,7 @@ public class MusicDAO {
     }//--seletMemoAll
     
     
-    //�׾��ֱ�
+    //음악 리스트 만들기
     private ArrayList<MusicVO> makeList(ResultSet rs)
     throws SQLException 
     {
